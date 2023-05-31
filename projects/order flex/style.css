@@ -1,0 +1,50 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+body {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  width: 30rem;
+  max-width: 90vw;
+}
+
+li {
+  display: flex;
+  background-color: #fff;
+  font-family: Arial, "sans-serif";
+  padding: 0.5rem;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
+  order: var(--order);
+}
+
+li > div {
+  flex: 80% 1 0;
+}
+
+li p {
+  padding: 0;
+  margin: 0.5rem;
+}
+
+.btn {
+  flex: 20%;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  font-size: 0.8rem;
+  cursor: pointer;
+}

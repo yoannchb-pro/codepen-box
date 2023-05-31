@@ -1,0 +1,36 @@
+body,
+html {
+  background: rebeccapurple;
+  margin: 0;
+  padding: 0;
+
+  min-height: 100vh;
+}
+
+* {
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+span,
+h1,
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.char {
+  transform: translateY(-0.2rem);
+  font-weight: lighter;
+  animation: char-an 350ms infinite linear 100ms alternate;
+}
+
+@keyframes char-an {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 0;
+  }
+}

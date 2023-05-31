@@ -1,0 +1,38 @@
+body,
+html {
+  padding: 0;
+  margin: 0;
+  background-color: #0f0e0e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  overflow: hidden;
+  display: flex;
+  height: 100vh;
+  width: 75%;
+}
+
+.infinite {
+  margin-top: -20rem;
+  overflow: hidden;
+  justify-content: center;
+  flex: calc(100% / 3) 1 1;
+  height: calc(100% + 20rem);
+}
+
+.img {
+  height: 20rem;
+  width: 100%;
+  margin: 20px;
+  background-position: center;
+  background-size: cover;
+}

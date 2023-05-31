@@ -1,0 +1,73 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #102027;
+}
+
+.liquid {
+  border-radius: 0.4rem;
+  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+  font-family: sans-serif, Arial;
+  color: white;
+  background: linear-gradient(to right, #0288d1, #5eb8ff);
+  height: 3.5rem;
+  width: 10rem;
+  border: none;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.liquid p {
+  z-index: 2;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.liquid:before,
+.liquid:after {
+  content: "";
+  position: absolute;
+  width: 19rem;
+  height: 17rem;
+  top: -16rem;
+  background-color: #102027;
+  border-radius: 40%;
+  z-index: 1;
+  transition: 0.4s ease-in-out;
+  animation: a 5s infinite linear;
+}
+
+.liquid:after {
+  width: 22rem;
+  height: 22rem;
+  top: -20rem;
+  z-index: 0;
+  background-color: #005b9f;
+  animation: a 10s infinite linear;
+}
+
+.liquid:hover:after,
+.liquid:hover:before {
+  top: -25rem;
+}
+
+@keyframes a {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

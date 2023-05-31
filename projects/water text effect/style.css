@@ -1,0 +1,36 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: #1b1a17;
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 7rem;
+  background-size: 130px 100%;
+  background-reapeat: repat-x;
+  background-image: url("https://i.gifer.com/9FZT.gif");
+  animation: a 3s infinite linear;
+  background-clip: text;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes a {
+  from {
+    background-position: -130px 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}

@@ -1,0 +1,136 @@
+:root {
+  --color-omber: #bebebe;
+  --blur: 8px;
+  --position: 2px;
+  --background: #e0e0e0;
+  --radius: 10px;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: var(--background);
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+* {
+  font-family: Arial, "sans-serif";
+}
+
+/*
+    TAB
+*/
+
+.container-tab {
+  margin: 2em;
+  box-shadow: calc(0px - var(--position)) calc(0px - var(--position))
+      var(--blur) #ffffff,
+    var(--position) var(--position) var(--blur) var(--color-omber);
+  width: 320px;
+  height: 70px;
+  border-radius: var(--radius);
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+.btn {
+  transition: 0.5s box-shadow;
+  padding: 0.2em;
+  width: 50px;
+  height: 40px;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #9baacf;
+  cursor: pointer;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: var(--position) var(--position) var(--blur) var(--color-omber),
+    calc(0px - var(--position)) calc(0px - var(--position)) var(--blur) #ffffff;
+}
+
+input:checked + .btn {
+  color: #6d5dfc;
+  background: var(--background);
+  box-shadow: inset var(--position) var(--position) var(--blur)
+      var(--color-omber),
+    inset calc(0px - var(--position)) calc(0px - var(--position)) var(--blur)
+      #ffffff;
+}
+
+/*
+    WAVE
+*/
+
+.wave-btn {
+  border-radius: 50%;
+  box-shadow: calc(0px - var(--position)) calc(0px - var(--position))
+      var(--blur) #ffffff,
+    var(--position) var(--position) var(--blur) var(--color-omber);
+  width: 80px;
+  height: 80px;
+  margin: 2em;
+  color: #6d5dfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.wave-btn p {
+  z-index: 2;
+}
+
+.wave {
+  box-shadow: 0 0 var(--blur) #ffffff, inset 0 0 var(--blur) var(--color-omber);
+  width: 80px;
+  height: 80px;
+  border: 5px solid var(--background);
+  border-radius: 50%;
+  position: absolute;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+}
+
+.wave1 {
+  animation: wave 4s infinite;
+}
+
+.wave2 {
+  animation-duration: 4s;
+  animation-delay: 1s;
+  animation-name: wave;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wave {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.75);
+    opacity: 0;
+  }
+}

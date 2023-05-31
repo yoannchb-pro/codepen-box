@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+body {
+  overflow: hidden;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  cursor: default;
+  list-style: none;
+}
+
+section {
+  position: relative;
+  background-color: #1b1a17;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: thin solid rgba(255, 255, 255, 0.2);
+  width: 18rem;
+  height: auto;
+  box-shadow: 0px 0px 30px rgba(27, 26, 23);
+}
+
+.active {
+  overflow: hidden;
+}
+
+.active .settings {
+  width: 100%;
+}
+
+.active .player {
+  transform: translate(3rem, 3rem);
+  filter: blur(6px);
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+.player {
+  position: relative;
+  transition: 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner,
+.banner-shadow {
+  border-radius: 1rem;
+  background-image: url("https://i.scdn.co/image/ab67616d0000b273f1d9d9871a2d21cc343166f3");
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+}
+
+.banner {
+  margin-top: -3rem;
+  filter: drop-shadow(0 20px 20px rgba(255, 255, 255, 0.3));
+}
+
+.banner-shadow {
+  position: absolute;
+  display: block;
+  transform: translateY(-10%) scale(0.9);
+  filter: blur(6px);
+}
+
+.title {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.heart {
+  color: red;
+  position: absolute;
+  right: 0rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.audio {
+  margin-top: 1rem;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  border-radius: 1rem;
+  height: 0.5rem;
+  flex: 80% 0 1;
+  background: #e1e1e1;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.elapsed-time {
+  background-color: rgba(27, 26, 23, 0.5);
+  width: 40%;
+  height: 100%;
+  border-radius: 1rem;
+}
+
+.settings {
+  overflow: hidden;
+  width: 0rem;
+  height: 100%;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+  z-index: 10;
+}
+
+.settings ul {
+  width: 10rem;
+}
+
+.settings li {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+li i {
+  margin-right: 0.5rem;
+}
