@@ -1,0 +1,33 @@
+{
+  "name": "codepen-box",
+  "version": "1.0.0",
+  "description": "A website with some of my projects",
+  "main": "./dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yoannchb-pro/codepen-box.git"
+  },
+  "keywords": [
+    "codepen-box",
+    "project",
+    "typescript",
+    "javascript"
+  ],
+  "author": "yoannchb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yoannchb-pro/codepen-box/issues"
+  },
+  "homepage": "https://github.com/yoannchb-pro/codepen-box#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "tempjs-template": "^1.0.7"
+  }
+}
