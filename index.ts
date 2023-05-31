@@ -15,7 +15,7 @@ function getProjects() {
 }
 
 const compiled = tempjs.compileFromFile(
-  path.resolve(__dirname, "../.template/template.html"),
+  path.resolve(__dirname, "../template/template.html"),
   {
     projects: getProjects(),
   }
