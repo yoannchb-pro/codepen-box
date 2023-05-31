@@ -148,9 +148,8 @@ Sortable.create(todoList, {
   onUpdate(event) {
     const oldIndex = event.oldIndex;
     const newIndex = event.newIndex;
-    const temp = todos[newIndex];
-    todos[newIndex] = todos[oldIndex];
-    todos[oldIndex] = temp;
+    const temp = todos.splice(oldIndex, 1)[0];
+    todos.splice(newIndex, 0, temp);
     updateStorage();
   },
 });

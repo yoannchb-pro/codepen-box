@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding: 1rem;
+  background-color: #e0e0e0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 1rem;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2rem 0rem;
+  font-size: 1.4rem;
+}
+
+h1 a {
+  color: #666af6;
+}
+
+.projects {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project {
+  color: #fff;
+  font-size: 1.3rem;
+  padding: 0.75rem;
+  text-decoration: none;
+  background-color: #666af6;
+  cursor: pointer;
+  flex-grow: 1;
+  text-align: center;
+  border-radius: 0.5rem;
+}
