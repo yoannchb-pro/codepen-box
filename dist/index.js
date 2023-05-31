@@ -7,16 +7,12 @@ const tempjs_template_1 = __importDefault(require("tempjs-template"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 function getProjects() {
-    const actualPath = path_1.default.resolve(__dirname, "..");
+    const actualPath = path_1.default.resolve(__dirname, "../projects");
     const files = fs_1.default.readdirSync(actualPath);
-    const directories = files
-        .filter((file) => {
-        if (!file.startsWith("[project]"))
-            return false;
+    const directories = files.filter((file) => {
         const stats = fs_1.default.statSync(`${actualPath}/${file}`);
         return stats.isDirectory();
-    })
-        .map((directory) => directory.replace("[project] ", ""));
+    });
     return directories;
 }
 const compiled = tempjs_template_1.default.compileFromFile(path_1.default.resolve(__dirname, "../.template/template.html"), {

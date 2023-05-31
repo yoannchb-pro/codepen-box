@@ -3,16 +3,13 @@ import path from "path";
 import fs from "fs";
 
 function getProjects() {
-  const actualPath = path.resolve(__dirname, "..");
+  const actualPath = path.resolve(__dirname, "../projects");
   const files = fs.readdirSync(actualPath);
 
-  const directories = files
-    .filter((file) => {
-      if (!file.startsWith("[project]")) return false;
-      const stats = fs.statSync(`${actualPath}/${file}`);
-      return stats.isDirectory();
-    })
-    .map((directory) => directory.replace("[project] ", ""));
+  const directories = files.filter((file) => {
+    const stats = fs.statSync(`${actualPath}/${file}`);
+    return stats.isDirectory();
+  });
 
   return directories;
 }
