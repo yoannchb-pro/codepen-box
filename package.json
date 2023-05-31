@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/yoannchb-pro/codepen-box#readme",
   "devDependencies": {
+    "@types/node": "^20.2.5",
     "typescript": "^5.0.4"
   },
   "dependencies": {
