@@ -9,19 +9,6 @@
   const inputTodo = document.querySelector(".add-todo input");
   const addBtn = document.querySelector(".add-todo i");
   const darkMode = document.querySelector("#darkmode");
-  function getLightModeIsEnabled() {
-      var _a;
-      return JSON.parse((_a = localStorage.lightMode) !== null && _a !== void 0 ? _a : "false");
-  }
-  function updateLightModeStorage() {
-      localStorage.lightMode = JSON.stringify(!getLightModeIsEnabled());
-  }
-  function loadStorage() {
-      return localStorage.todos ? JSON.parse(localStorage.todos) : undefined;
-  }
-  function updateStorage() {
-      localStorage.todos = JSON.stringify(todos);
-  }
   const todos = (_a = loadStorage()) !== null && _a !== void 0 ? _a : [
       { text: "Try light mode", checked: false },
       { text: "Try drag and drop", checked: false },
@@ -30,47 +17,85 @@
       { text: "Try editing a todo", checked: false },
       { text: "Make a cake: eggs, milk, sugar, chocolate", checked: true },
   ];
-  function setEvents(todo) {
-      todo.title.addEventListener("click", function () {
-          if (!todo.title.getAttribute("readonly"))
+  /**
+   * Get if the lightmode is enabled or not from localstorage
+   * @returns
+   */
+  function getLightModeIsEnabled() {
+      var _a;
+      return JSON.parse((_a = localStorage.lightMode) !== null && _a !== void 0 ? _a : "false");
+  }
+  /**
+   * Update the actual localstorage lightmode value
+   */
+  function updateLightModeStorage() {
+      localStorage.lightMode = JSON.stringify(!getLightModeIsEnabled());
+  }
+  /**
+   * Load the todos list from the storage
+   * @returns
+   */
+  function loadStorage() {
+      return localStorage.todos ? JSON.parse(localStorage.todos) : undefined;
+  }
+  /**
+   * Update the todos list in the storage
+   */
+  function updateStorage() {
+      localStorage.todos = JSON.stringify(todos);
+  }
+  /**
+   * Setup events on a todo
+   * Check, trash, update
+   * @param param0
+   */
+  function setEvents({ todo, title, container, update, trash, }) {
+      title.addEventListener("click", function () {
+          if (!title.getAttribute("readonly"))
               return;
-          const index = todos.findIndex((e) => e === todo.todo);
+          const index = todos.findIndex((e) => e === todo);
           todos[index].checked = !todos[index].checked;
-          todo.container.classList.toggle("checked");
+          container.classList.toggle("checked");
           updateStorage();
       });
-      todo.trash.addEventListener("click", function () {
-          const index = todos.findIndex((e) => e === todo.todo);
+      trash.addEventListener("click", function () {
+          const index = todos.findIndex((e) => e === todo);
           todos.splice(index, 1);
-          todo.container.classList.remove("show");
-          todo.container.addEventListener("transitionend", todo.container.remove);
+          container.classList.remove("show");
+          container.addEventListener("transitionend", container.remove);
           updateStorage();
       });
-      todo.update.addEventListener("click", function () {
-          if (todo.todo.checked)
+      update.addEventListener("click", function () {
+          if (todo.checked)
               return;
-          todo.title.removeAttribute("readonly");
-          todo.title.focus();
-          todo.title.setSelectionRange(todo.title.value.length, todo.title.value.length);
+          const titleSize = title.value.length;
+          title.removeAttribute("readonly");
+          title.focus();
+          title.setSelectionRange(titleSize, titleSize);
       });
       const updateFn = function () {
           var _a;
-          const trimmed = (_a = todo.title.value) === null || _a === void 0 ? void 0 : _a.trim();
+          const trimmed = (_a = title.value) === null || _a === void 0 ? void 0 : _a.trim();
           if (trimmed === "") {
-              todo.title.focus();
+              title.focus();
               return;
           }
-          const index = todos.findIndex((e) => e === todo.todo);
-          todo.title.setAttribute("readonly", "true");
+          const index = todos.findIndex((e) => e === todo);
+          title.setAttribute("readonly", "true");
           todos[index].text = trimmed;
           updateStorage();
       };
-      todo.title.addEventListener("focusout", updateFn);
-      todo.title.addEventListener("keydown", (event) => event.key === "Enter" && updateFn());
+      title.addEventListener("focusout", updateFn);
+      title.addEventListener("keydown", (event) => event.key === "Enter" && updateFn());
   }
+  /**
+   * Create the todo element and set up events on it
+   * @param todo
+   */
   function addTodo(todo) {
       const container = document.createElement("div");
       container.classList.add("todo");
+      container.classList.add("show");
       if (todo.checked)
           container.classList.add("checked");
       const title = document.createElement("input");
@@ -86,13 +111,13 @@
       container.appendChild(trash);
       setEvents({ todo, title, container, update, trash });
       todoList.appendChild(container);
-      window.requestAnimationFrame(() => container.classList.add("show"));
       updateStorage();
   }
-  for (const todo of todos) {
-      addTodo(todo);
-  }
-  const addFn = function () {
+  /**
+   * Function to add a new todo and reset the add input
+   * @returns
+   */
+  function addFn() {
       var _a;
       const trimmed = (_a = inputTodo.value) === null || _a === void 0 ? void 0 : _a.trim();
       if (trimmed === "")
@@ -101,15 +126,8 @@
       todos.push(todo);
       addTodo(todo);
       inputTodo.value = "";
-  };
-  inputTodo.addEventListener("keydown", (event) => event.key === "Enter" && addFn());
-  addBtn.addEventListener("click", addFn);
-  darkMode.addEventListener("click", function () {
-      document.documentElement.classList.toggle("light");
-      updateLightModeStorage();
-  });
-  if (getLightModeIsEnabled() === true)
-      document.documentElement.classList.add("light");
+  }
+  //allow drag and drop
   Sortable.create(todoList, {
       onUpdate(event) {
           const oldIndex = event.oldIndex;
@@ -119,6 +137,21 @@
           updateStorage();
       },
   });
+  //handle key "Enter" pressed to add a new todo
+  inputTodo.addEventListener("keydown", (event) => event.key === "Enter" && addFn());
+  addBtn.addEventListener("click", addFn);
+  //event listener to toggle light mode/dark mode
+  darkMode.addEventListener("click", function () {
+      document.documentElement.classList.toggle("light");
+      updateLightModeStorage();
+  });
+  //at start if the light mode is enabled in the localstorage we set it as true
+  if (getLightModeIsEnabled() === true)
+      document.documentElement.classList.add("light");
+  //we create all the template todos or loaded from the localstorage at start
+  for (const todo of todos) {
+      addTodo(todo);
+  }
 
 }));
 //# sourceMappingURL=index.js.map
