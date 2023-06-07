@@ -117,7 +117,7 @@ function setEvents({
 function addTodo(todo: Todo) {
   const container = document.createElement("div");
   container.classList.add("todo");
-  container.classList.add("show");
+  window.requestAnimationFrame(() => container.classList.add("show"));
   if (todo.checked) container.classList.add("checked");
 
   const title = document.createElement("input");
