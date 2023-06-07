@@ -135,3 +135,16 @@ i {
   color: var(--secondary);
   font-size: 1.7rem;
 }
+
+.shake {
+  animation: shake 250ms ease;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(1deg);
+  }
+  50% {
+    transform: rotate(-1deg);
+  }
+}

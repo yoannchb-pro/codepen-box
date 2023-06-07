@@ -78,6 +78,8 @@
           const trimmed = (_a = title.value) === null || _a === void 0 ? void 0 : _a.trim();
           if (trimmed === "") {
               title.focus();
+              container.classList.add("shake");
+              container.addEventListener("animationend", () => container.classList.remove("shake"), { once: true });
               return;
           }
           const index = todos.findIndex((e) => e === todo);

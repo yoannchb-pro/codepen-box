@@ -94,6 +94,12 @@ function setEvents({
 
     if (trimmed === "") {
       title.focus();
+      container.classList.add("shake");
+      container.addEventListener(
+        "animationend",
+        () => container.classList.remove("shake"),
+        { once: true }
+      );
       return;
     }
 
