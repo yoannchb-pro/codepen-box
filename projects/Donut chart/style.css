@@ -1,0 +1,95 @@
+/* Transform properties for p-lt, p-rt, p-lb and legend-line need to be fixe it's actually random */
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #e1e1e1;
+}
+
+#chart-container {
+  position: relative;
+  width: 15rem;
+  height: 15rem;
+}
+
+#chart {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e1e1e1;
+}
+
+#chart::after {
+  content: "";
+  display: block;
+  background-color: #e1e1e1;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+}
+
+.legend-line {
+  position: absolute;
+  border-bottom: thin solid #000;
+  width: 5rem;
+  text-align: end;
+  transform: translateY(0.25rem) translateX(2rem);
+}
+
+.legend-line::before {
+  content: attr(data-legend);
+  margin-left: calc(100% - 2rem);
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+}
+
+.legend-line::after {
+  content: "";
+  display: block;
+  width: 2rem;
+  border-bottom: thin solid #000;
+  margin-left: -2rem;
+  transform-origin: bottom right;
+  transform: rotate(45deg);
+}
+
+.p-rt {
+  transform: translateY(-2.5rem) translateX(1.5rem);
+}
+
+.p-rt::after {
+  transform: rotate(-45deg);
+}
+
+.p-lb {
+  text-align: start;
+  transform: translateY(0.5rem) translateX(calc(-100% - 1.5rem));
+}
+
+.p-lb::before,
+.p-lt::before {
+  margin-left: -2rem;
+}
+
+.p-lb::after {
+  position: absolute;
+  right: 0;
+  transform-origin: top right;
+  transform: rotate(135deg);
+}
+
+.p-lt {
+  text-align: left;
+  transform: translateY(-2.5rem) translateX(calc(-100% - 1.5rem));
+}
+
+.p-lt::after {
+  position: absolute;
+  right: 0;
+  transform: rotate(-135deg);
+}
