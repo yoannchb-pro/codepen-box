@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border: none;
+  background-color: #0091ea;
+  color: #eee;
+  padding: 1rem;
+  border-radius: 99rem;
+  transform-origin: center;
+  cursor: pointer;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 100%;
+  border: thin #e1e1e120 solid;
+  background-color: transparent;
+  aspect-ratio: 1 / 1;
+}
+
+.circle-attraction {
+  width: 100px;
+}
+
+.circle-detection {
+  width: 300px;
+}
